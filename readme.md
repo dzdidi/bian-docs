@@ -105,6 +105,20 @@ As a result of these design properties all enterprise business information can b
 
 The component based and process information architectures both have specific strengths and weaknesses. Many of these may be leveraged or mitigated with different application design and implementation techniques. At the conceptual level the differentiating properties are:
 
+### Strengths
+| Component Information Architecture  | Process Information Architecture |
+|--------------------------------------|----------------------------------|
+| all business information governance is uniquely assignable to a single responsible business entity | business information is defined to support the processing logic precisely
+| the business context for information is well defined. Avoiding the incorrect inference that similar types of information used in different business situations must always share the same information value | business information can be structured to ensure highly efficient access throughout the process |
+| the complete life-cycle of the information can be managed, ensuring appropriate action can be taken to maintain the integrity and currency of the information throughout its usage |common enterprise reference business information can be easily duplicated and integrated where available |
+
+### Weaknesses
+| Component Information Architecture  | Process Information Architecture |
+|--------------------------------------|----------------------------------|
+|providing access to singularly governed information introduces the potential for delay/latency and possible access limitations/constraints (during information updates in particular). | local business information views fragment the overall enterprise model and can lead to extensive processing and data inconsistencies |
+| | designs may not be readily adaptive to changes and enhancements |
+
+
 * Component Information Architecture Strengths:
   * all business information governance is uniquely assignable to a single responsible business entity
   * the business context for information is well defined. Avoiding the incorrect inference that similar types of information used in different business situations must always share the same information value
