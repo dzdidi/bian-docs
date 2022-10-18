@@ -194,6 +194,6 @@ In this situation one Service Domain is responsible for the consolidation, analy
 - FTX - messaging 
 
 # Additional Resources
-[v10](https://bian.org/servicelandscape-10-0-0/views.html)
-[Guide](https://bian.org/wp-content/uploads/2020/10/BIAN-Semantic-API-Pactitioner-Guide-V8.1-FINAL.pdf)
+* [v10](https://bian.org/servicelandscape-10-0-0/views.html)
+* [Guide](https://bian.org/wp-content/uploads/2020/10/BIAN-Semantic-API-Pactitioner-Guide-V8.1-FINAL.pdf)
 
