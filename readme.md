@@ -1,4 +1,4 @@
-#Users (case study available):
+# Users (case study available):
 [Case studies](https://bian.org/deliverables/case-studies/)
 [Implementation Exmaples](https://bian.org/wp-content/uploads/2021/03/BIAN_Implementation_Examples_v1.pdf)
 
@@ -15,16 +15,16 @@
 - [Cognizant](https://bian.org/wp-content/uploads/2021/08/Core-Banking-Modernization-Using-BIAN.pdf)
 - Archi Banking Group
 
-#Technologically backed by:
+# Technologically backed by:
 - IBM https://www.ibm.com/support/pages/bian-mappings-ibm-banking-process-and-service-models
 - Redhat https://www.redhat.com/en/resources/build-digital-foundation-coreless-banking-overview
 
-#Size:
+# Size:
 - 250+ Assets
 - 19 Functional Patterns
 - 17 Action Terms
 
-#Structure:
+# Structure:
 BIAN Service Landscape consists of ~320 Service Domains. Grouped in Busiess Areas which in turn consist of Business Domains. A Service Domain is a conceptual functional design that can be mapped/related to a major application module.  Each service domain contains exactly 1 Asset. Combination of Asset and Functional Patter creates Control Record.
 
 **Function Patters** can also be represented with 1-to-1 mapping to Generic Artifacts (just a  more tech terms) which can be mapped to Behaviour Qualifiers (even more concrete items).
