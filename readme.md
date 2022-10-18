@@ -24,21 +24,8 @@
 - 19 Functional Patterns
 - 17 Action Terms
 
-# Structure:
-BIAN Service Landscape consists of ~320 Service Domains. Grouped in Busiess Areas which in turn consist of Business Domains. A Service Domain is a conceptual functional design that can be mapped/related to a major application module.  Each service domain contains exactly 1 Asset. Combination of Asset and Functional Patter creates Control Record.
-
-**Function Patters** can also be represented with 1-to-1 mapping to Generic Artifacts (just a  more tech terms) which can be mapped to Behaviour Qualifiers (even more concrete items).
-
-> For example: Function Patter "Track" -> Generic Artifact "Log Record" -> Behaviour Qualifiers "Event"
-
-Which are fine to devide in Qualifiers but they are out of BIAN scope.
-
-
-**Action Term** Every Service Domain offers a collection of service operations and usually consumes or ‘delegates’ by calling the service operations of other Service Domains as needed to complete its work.  (Action Terms are like inteface methods, and BIAN provides mapping to REST specification)
-
-**BIAN provides default mapping table for Functional Patter - to - Action Term**
-
-Service Operation - applicable Action Term and optionally a Behavior Qualifier.
+# Basic Terminology:
+BIAN Service Landscape consists of ~320 Service Domains. Grouped in Busiess Areas which in turn consist of Business Domains. A Service Domain is a conceptual functional design that can be mapped/related to a major application module. 
 
 Service Domain properties:
 * a discrete business functional partition (not a process step)
@@ -51,34 +38,20 @@ Service Domain properties:
 
 > For example, the Service Domain Customer Relationship Management applies the ‘management’ control pattern to instances of a ‘customer relationship’ (an intangible asset) for the duration of their relationship with the bank and it does so for every bank customer.
 
+
+Each Service Domain contains exactly 1 Asset. **Combination of Asset and Functional Patter creates Control Record**.
+
+**Function Patters** can also be represented with 1-to-1 mapping to Generic Artifacts (just a  more tech terms) which can be mapped to Behaviour Qualifiers (even more concrete items). Which are fine to devide in Qualifiers but they are out of BIAN scope.
+
+> For example: Function Patter "Track" -> Generic Artifact "Log Record" -> Behaviour Qualifiers "Event"
+
+**Action Term** Every Service Domain offers a collection of service operations and usually consumes or ‘delegates’ by calling the service operations of other Service Domains as needed to complete its work.  (Action Terms are like inteface methods, and BIAN provides mapping to REST specification)
+
+**BIAN provides default mapping table for Functional Patter - to - Action Term**
+
+**Service Operation** - applicable Action Term and optionally a Behavior Qualifier.
+
 # Implementation guidance
-
-> Having both the dynamic (business scenario) and static (wireframe) models of the area of interest is useful to fully understand the service-centered design for the technical leads and architects.
-
-[Addoption guide](https://view.ceros.com/hotwirepr/bian-guide-to-adoption/p/1)
-
-## Mapping to REST
-
-[APIs](https://bian.org/semantic-apis/)
-
-To define BIAN Semantic APIs each default BIAN Service Domain service operation is matched to a ‘REST endpoint’ description. The scope/purpose of each individual BIAN Service Operation and its associated REST endpoint description is defined by three concerns:
-* The Service Domain’s core functionality
-* The service operation action term
-* Optionally the Behavior Qualifier
-
-There are several design properties that need to be reflected in the Service Domain specifications to support a fully
-event driven design. Some example considerations are (in no specific order):
-* Semantic Vocabulary Agreed to Required Precision – all exchanged semantic information must be defined as specific changes to the value of this information will often be a service triggering factor;
-* State Management & Service Triggering – comprehensive event profiles for the Service Domains and their service triggering logic. This should include configuring thresholds and policies. These can be linked to key information attributes or with control record and control record partitions as defined by the behavior qualifier type;
-* Service Operation Agreements and Policies – this includes more detailed service make-up definitions, including cross-referencing the policies and thresholds governing/triggering service exchanges as well as the required service performance, information integrity and security control features
-* Transactional, Control, and Referential Exchanges – the required Service Domain information exchanges need to capture all transactional business activity, management command and control interactions and the background synchronization of shared reference information
-* Defensive Operations – the Service Domain service operation implementation must always handle delayed/erroneous requests and respond in a graceful/defensive manner
-* Exchanges must be Idempotent and Commutative – the Service Domains must handle duplicate exchanges and tolerate that any business event may result in parallel threads of activity that can complete in different relative sequences based on prevailing physical conditions
-* Utilities and Middleware – to provide core Service Domain utilities such as a general service directory, data storage and management, transaction logging, data analysis and reporting, transaction assurance and state/trigger handling
-* Routing/Communication Capabilities – to be able to discover and establish all required Service Domain connections with support for the associated message queue and event capabilities
-
-
-# Implementation Approache
 
 BIAN follows component based design in contrast to process based design.
 
@@ -99,8 +72,6 @@ The component based and process information architectures both have specific str
 |providing access to singularly governed information introduces the potential for delay/latency and possible access limitations/constraints (during information updates in particular). | local business information views fragment the overall enterprise model and can lead to extensive processing and data inconsistencies |
 | | designs may not be readily adaptive to changes and enhancements |
 
-## Disclaimer
-
 ### Values:
 key insights the solution designer should take from the conceptual Service Domains as they set out the overall structure of their application design include:
 * The core business role/function supported by each Service Domain partition
@@ -118,7 +89,7 @@ As stated, at the conceptual level solution architects/designers should be aware
 
 Components define business functional building blocks, each representing the capacity to perform a specific business need. **Operational reuse** is not to be confused with the more conventional code-based **utility re-use** – where similar processing logic can be encoded and re-used.
 
-The key difference is that though the SW utility functions as an autonomous capability, it does not represent a uniquely assignable business responsibility. By definition there can be many concurrent instances of a SW utility operating completely independently. The utility implementation ensures that the logic is applied consistently and improves software integrity and development productivity but it does not specifically address the operational re-use of a discrete business capability. Not surprisingly a SW Utility will typically be much finer grained than a Service Domain.
+The key difference is that though the software utility functions as an autonomous capability, it does not represent a uniquely assignable business responsibility. By definition there can be many concurrent instances of a software utility operating completely independently. The utility implementation ensures that the logic is applied consistently and improves software integrity and development productivity but it does not specifically address the operational re-use of a discrete business capability. Not surprisingly a software Utility will typically be much finer grained than a Service Domain.
 
 The component design adopted by BIAN has a number of implications for a Service Domain’s information management:
 * **Persistence** – the BIAN Service Domain defines a persistent business capability with its associated information store (database) – it may be active or inactive at any point in time, but it can always be available to respond to external service requests and typically also executes its own internal schedule of actions
@@ -126,6 +97,32 @@ The component design adopted by BIAN has a number of implications for a Service 
 * **Discrete/Non-overlapping** – each Service Domain is defined to perform a single discrete and unique business function.  It may delegate actions through service calls to other specialized Service Domains. But the Service Domain is accountable for the outcome of all delegated tasks and the interpretation of any returned information.
 
 As a result of these design properties all enterprise business information can be **uniquely assigned to a single governing Service Domain** where it is maintained for its complete lifespan. The information exchanged through service operations provides the values/status details of information governed by one Service Domain that can be interpreted and applied to information governed by another. But each Service Domain maintains its own complete and independent information viewpoint and is responsible for the integrity of its own governed information.
+
+
+# Implementation Approach
+
+> Having both the dynamic (business scenario) and static (wireframe) models of the area of interest is useful to fully understand the service-centered design for the technical leads and architects.
+
+[Addoption guide](https://view.ceros.com/hotwirepr/bian-guide-to-adoption/p/1)
+
+## Mapping to REST
+
+[APIs](https://bian.org/semantic-apis/)
+
+To define BIAN Semantic APIs each default BIAN Service Domain service operation is matched to a ‘REST endpoint’ description. The scope/purpose of each individual BIAN Service Operation and its associated REST endpoint description is defined by three concerns:
+* The Service Domain’s core functionality
+* The service operation action term
+* Optionally the Behavior Qualifier
+
+There are several design properties that need to be reflected in the Service Domain specifications to support a fully event driven design. Some example considerations are (in no specific order):
+* **Semantic Vocabulary Agreed to Required Precision** - all exchanged semantic information must be defined as specific changes to the value of this information will often be a service triggering factor;
+* **State Management & Service Triggering** - comprehensive event profiles for the Service Domains and their service triggering logic. This should include configuring thresholds and policies. These can be linked to key information attributes or with control record and control record partitions as defined by the behavior qualifier type;
+* **Service Operation Agreements and Policies** - this includes more detailed service make-up definitions, including cross-referencing the policies and thresholds governing/triggering service exchanges as well as the required service performance, information integrity and security control features
+* **Transactional, Control, and Referential Exchanges** - the required Service Domain information exchanges need to capture all transactional business activity, management command and control interactions and the background synchronization of shared reference information
+* **Defensive Operations** - the Service Domain service operation implementation must always handle delayed/erroneous requests and respond in a graceful/defensive manner
+* **Exchanges must be Idempotent and Commutative** - the Service Domains must handle duplicate exchanges and tolerate that any business event may result in parallel threads of activity that can complete in different relative sequences based on prevailing physical conditions
+* **Utilities and Middleware** - to provide core Service Domain utilities such as a general service directory, data storage and management, transaction logging, data analysis and reporting, transaction assurance and state/trigger handling
+* **Routing/Communication Capabilities** - to be able to discover and establish all required Service Domain connections with support for the associated message queue and event capabilities
 
 ### Service Domain Externalization
 
@@ -148,7 +145,7 @@ To support organizational configuration a Service Domain may be deployed in four
 * **External** – records that there is a direct connection from the application cluster to the Service Domain to either offer and/or subscribe to services. These define the main external application interfaces
 * **Peripheral** – Sometimes it helps to include additional Service Domains in the cluster diagram that have some indirect involvement (through an External Service Domain) simply to clarify limitations in the external application boundary
 
-# Implementation Suggestions
+# Suggestions on Implementation Strategies
 
 ## Legacy Wrapping
 
@@ -190,14 +187,13 @@ In this situation one Service Domain is responsible for the consolidation, analy
 2. Wrapped Host – in addition to the access gateway, the wrapped host approach includes a front end capability that can address shortfalls in the host systems.  This can support host migration and repurposing efforts. It includes coordinating access with multiple systems for more complex transaction, resolving master slave data conflicts, host access session optimization, information advanced look-up and caching and supporting functional extensions
 3. Component Architecture – involves a comprehensive set of controls to manage external access to allow direct connection to the internal capabilities of the bank.  A wireframe of the external access platform is shown below
 
-
-
-[v10](https://bian.org/servicelandscape-10-0-0/views.html)
-[Guide](https://bian.org/wp-content/uploads/2020/10/BIAN-Semantic-API-Pactitioner-Guide-V8.1-FINAL.pdf)
-
-
 # Compatibility with other formats
 [ISO20022 and FTX](https://bian.org/about-bian/bian-and-other-standards-bodies/)
 
 - ISO20022 - messaging
 - FTX - messaging 
+
+# Additional Resources
+[v10](https://bian.org/servicelandscape-10-0-0/views.html)
+[Guide](https://bian.org/wp-content/uploads/2020/10/BIAN-Semantic-API-Pactitioner-Guide-V8.1-FINAL.pdf)
+
