@@ -1,7 +1,11 @@
-# Users (case study available):
-[Case studies](https://bian.org/deliverables/case-studies/)
-[Implementation Exmaples](https://bian.org/wp-content/uploads/2021/03/BIAN_Implementation_Examples_v1.pdf)
+# Overview
+## Externalities
 
+### Uses (case study available):
+[List of Case Studies](https://bian.org/deliverables/case-studies/)
+[List of Implementation Exmaples](https://bian.org/wp-content/uploads/2021/03/BIAN_Implementation_Examples_v1.pdf)
+
+#### Collection of examples from various sources:
 - [ABSA bank](https://bian.org/wp-content/uploads/2021/03/BIAN_Implementation_Examples_v1.pdf#%5B%7B%22num%22%3A113%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C540%2C0%5D)
 - [CC and C Soultions](https://bian.org/deliverables/case-studies/cc_c/)
 - [CIBC](https://bian.org/wp-content/uploads/2021/03/BIAN_Implementation_Examples_v1.pdf#%5B%7B%22num%22%3A193%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C540%2C0%5D)
@@ -15,19 +19,26 @@
 - [Cognizant](https://bian.org/wp-content/uploads/2021/08/Core-Banking-Modernization-Using-BIAN.pdf)
 - Archi Banking Group
 
-# Technologically backed by:
+### Technological backings:
 - IBM https://www.ibm.com/support/pages/bian-mappings-ibm-banking-process-and-service-models
 - Redhat https://www.redhat.com/en/resources/build-digital-foundation-coreless-banking-overview
 
-# Size:
+## Internalities
+### Size:
+BIAN Service Landscape consists of ~320 Service Domains. Grouped in Busiess Areas which in turn consist of Business Domains.
+
+- 320 Service Domains
 - 250+ Assets
 - 19 Functional Patterns
 - 17 Action Terms
 
-# Basic Terminology:
-BIAN Service Landscape consists of ~320 Service Domains. Grouped in Busiess Areas which in turn consist of Business Domains. A Service Domain is a conceptual functional design that can be mapped/related to a major application module. 
+A Service Domain is a conceptual functional design that can be mapped/related to a major application module.
 
-Service Domain properties:
+### Basic Terminology:
+
+Each Service Domain contains exactly 1 Asset. **Combination of Asset and Functional Patter creates Control Record**.
+
+#### Service Domain properties:
 * a discrete business functional partition (not a process step)
 * peer collection covers all business activity (elemental)
 * acts as an operational service center
@@ -37,9 +48,6 @@ Service Domain properties:
 * handles single or multiple instances for a short or long life-span
 
 > For example, the Service Domain Customer Relationship Management applies the ‘management’ control pattern to instances of a ‘customer relationship’ (an intangible asset) for the duration of their relationship with the bank and it does so for every bank customer.
-
-
-Each Service Domain contains exactly 1 Asset. **Combination of Asset and Functional Patter creates Control Record**.
 
 **Function Patters** can also be represented with 1-to-1 mapping to Generic Artifacts (just a  more tech terms) which can be mapped to Behaviour Qualifiers (even more concrete items). Which are fine to devide in Qualifiers but they are out of BIAN scope.
 
@@ -51,29 +59,27 @@ Each Service Domain contains exactly 1 Asset. **Combination of Asset and Functio
 
 **Service Operation** - applicable Action Term and optionally a Behavior Qualifier.
 
-# Implementation guidance
+# Framework's Implementation Justification
 
 BIAN follows component based design in contrast to process based design.
 
-## Contrasting the Potentially Conflicting Issues of Performance and Consistency
-
 The component based and process information architectures both have specific strengths and weaknesses. Many of these may be leveraged or mitigated with different application design and implementation techniques. At the conceptual level the differentiating properties are:
 
-### Strengths
+### Strengths (relative to Process centric)
 | Component Information Architecture  | Process Information Architecture |
-|--------------------------------------|----------------------------------|
+|-------------------------------------|----------------------------------|
 | all business information governance is uniquely assignable to a single responsible business entity | business information is defined to support the processing logic precisely
 | the business context for information is well defined. Avoiding the incorrect inference that similar types of information used in different business situations must always share the same information value | business information can be structured to ensure highly efficient access throughout the process |
 | the complete life-cycle of the information can be managed, ensuring appropriate action can be taken to maintain the integrity and currency of the information throughout its usage |common enterprise reference business information can be easily duplicated and integrated where available |
 
-### Weaknesses
+### Weaknesses (relative to Process centric)
 | Component Information Architecture  | Process Information Architecture |
-|--------------------------------------|----------------------------------|
+|-------------------------------------|----------------------------------|
 |providing access to singularly governed information introduces the potential for delay/latency and possible access limitations/constraints (during information updates in particular). | local business information views fragment the overall enterprise model and can lead to extensive processing and data inconsistencies |
 | | designs may not be readily adaptive to changes and enhancements |
 
 ### Values:
-key insights the solution designer should take from the conceptual Service Domains as they set out the overall structure of their application design include:
+Key insights the solution designer should take from the conceptual Service Domains as they set out the overall structure of their application design include:
 * The core business role/function supported by each Service Domain partition
 * The type of business information the Service Domain governs
 * Representative service operations offered as major application partition interfaces
@@ -89,8 +95,9 @@ As stated, at the conceptual level solution architects/designers should be aware
 
 Components define business functional building blocks, each representing the capacity to perform a specific business need. **Operational reuse** is not to be confused with the more conventional code-based **utility re-use** – where similar processing logic can be encoded and re-used.
 
-The key difference is that though the software utility functions as an autonomous capability, it does not represent a uniquely assignable business responsibility. By definition there can be many concurrent instances of a software utility operating completely independently. The utility implementation ensures that the logic is applied consistently and improves software integrity and development productivity but it does not specifically address the operational re-use of a discrete business capability. Not surprisingly a software Utility will typically be much finer grained than a Service Domain.
+The key difference is that though the software utility functions as an autonomous capability, it does not represent a uniquely assignable business responsibility. By definition there can be many concurrent instances of a software utility operating completely independently. The utility implementation ensures that the logic is applied consistently and improves software integrity and development productivity but it does not specifically address the operational re-use of a discrete business capability. 
 
+#### Implications
 The component design adopted by BIAN has a number of implications for a Service Domain’s information management:
 * **Persistence** – the BIAN Service Domain defines a persistent business capability with its associated information store (database) – it may be active or inactive at any point in time, but it can always be available to respond to external service requests and typically also executes its own internal schedule of actions
 * **Fully Encapsulated/Autonomous** – because the Service Domain is responsible for the complete life cycle operation of its business role it consequently governs all of the associated business logic and information required to perform its responsibilities for its complete lifespan.
@@ -99,11 +106,11 @@ The component design adopted by BIAN has a number of implications for a Service 
 As a result of these design properties all enterprise business information can be **uniquely assigned to a single governing Service Domain** where it is maintained for its complete lifespan. The information exchanged through service operations provides the values/status details of information governed by one Service Domain that can be interpreted and applied to information governed by another. But each Service Domain maintains its own complete and independent information viewpoint and is responsible for the integrity of its own governed information.
 
 
-# Implementation Approach
+# Adoption guide
 
 > Having both the dynamic (business scenario) and static (wireframe) models of the area of interest is useful to fully understand the service-centered design for the technical leads and architects.
 
-[Addoption guide](https://view.ceros.com/hotwirepr/bian-guide-to-adoption/p/1)
+[Adoption guide](https://view.ceros.com/hotwirepr/bian-guide-to-adoption/p/1)
 
 ## Mapping to REST
 
