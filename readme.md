@@ -51,7 +51,7 @@ Each Service Domain contains exactly 1 Asset. **Combination of Asset and Functio
 
 **Function Patters** can also be represented with 1-to-1 mapping to Generic Artifacts (just a  more tech terms) which can be mapped to Behaviour Qualifiers (even more concrete items). Which are fine to devide in Qualifiers but they are out of BIAN scope.
 
-> For example: Function Patter "Track" -> Generic Artifact "Log Record" -> Behaviour Qualifiers "Event"
+> For example: Function Pattern "Track" -> Generic Artifact "Log Record" -> Behaviour Qualifiers "Event"
 
 **Action Term** Every Service Domain offers a collection of service operations and usually consumes or ‘delegates’ by calling the service operations of other Service Domains as needed to complete its work.  (Action Terms are like inteface methods, and BIAN provides mapping to REST specification)
 
