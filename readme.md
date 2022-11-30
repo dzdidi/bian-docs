@@ -112,6 +112,69 @@ As a result of these design properties all enterprise business information can b
 
 [Adoption guide](https://view.ceros.com/hotwirepr/bian-guide-to-adoption/p/1)
 
+## Step by step
+
+### Stage 1: Evaluate BIAN
+1. Assess your needs:
+  * Why does your Organization need a banking model?
+2. Conduct a GAP analysis:
+  * Review industry models and perform GAP evaluation against use?
+3. Determine the Value Proposition:
+  * What is BIAN value proposition to your Organization?
+
+### Stage 2: Build Pilot Case
+1. Identify key opportunities:
+  * Have you determined how BIAN could satisfy your organization's specific needs?Have you identified key opportunities?
+2. Identify stakeholders:
+  * Are you targeting specific business areas within your organization?
+  * Have you socialized and educated key business stakeholders on BIAN concept?
+3. Define pilot goals, scope & timelines: 
+ * Have you developed a business case that articulates the pilot goal, scope and timelines?
+4. Receive go/no-go decision for pilot:
+ * Have you received a decision to move forward with the BIAN pilot (i.e. release of funds)?
+
+
+### Stage 3: Pilot BIAN
+1. Prepare for the Pilot:
+  * Have you articulated your pilot SMART goals?
+  * Have you identified training requirements for your key participants?
+  * Have you selected projects to be included in your pilot?
+2. Execute the Pilot:
+  * Have you successfully completed the pilot and summarized your findings?
+3. Make a Recommendation:
+ * Have you made a recommendation based on your findings to inform a go/no-go decision?
+4. Receive go/no-go decision for BIAN rollout:
+ * Is a decision made to rollout BIAN to your organization?
+
+### Stage 4: Adopt BIAN
+1. Define your Adoption approach:
+ * Have you defined your Adoption Approach (e.g. 'big bang', specific LOB or specific projects)?
+2. Manage your Change:
+  * Have you defined a change management plan?
+  * Have you identified/trained your change champions and agents?
+  * Have you addressed changes to your process & tool?
+3. Create a framework for BIAN Adoption:
+  * Have you defined principles for using BIAN across your organization?
+  * Have you established mechanisms to promote and measure the successful adoption of BIAN?
+
+### Stage 5: Evolve your Architecture Practice
+1. Develop an organization-specific Architecture:
+  * Have you defined your architecture design principles?
+  * Are you using BIAN as a reference framework?
+  * Have you identified a domain for implementation?
+  * Have you created design pattern(s)?
+2. Continuously improve your Architecture Practice:
+  * Have you developed a governance framework to continuously improve your practice?
+  * Have you developed feedback mechanisms to identify gaps for resolution?
+  * Are you capturing metrics to monitor the effectiveness of your practice using BIAN?
+
+### Stage 6: Realize the Benefits
+1. Define Metrics:
+  * Have you defined metrics to measure the realization of your anticipated benefits?
+2. Measure & Report:
+  * Are you reporting on benefits realized or areas for improvement(s) using measures?
+  * Can you extend and improve usage across your organization (see Stage 4)
+
 ## Mapping to REST
 
 [APIs](https://bian.org/semantic-apis/)
